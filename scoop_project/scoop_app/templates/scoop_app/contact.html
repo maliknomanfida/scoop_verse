@@ -1,0 +1,42 @@
+{% extends 'scoop_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 50px;">
+    <h1>Contact Us</h1>
+    <p>Feel free to reach out to ScoopVerse!</p>
+{% if success %}
+    <p style="color: green; font-weight: bold; text-align: center;">
+        Thank you for contacting ScoopVerse! Your message has been submitted successfully.
+    </p>
+    {% endif %}
+
+    {% if error %}
+    <p style="color: red; font-weight: bold; text-align: center;">
+        Please fill all fields before submitting the form.
+    </p>
+    {% endif %}
+    <form method="POST" action="{% url 'contact' %}" style="display: inline-block; text-align: left; background: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
+        {% csrf_token %} 
+        
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold;">Name:</label>
+            <input type="text" name="name" required style="width: 300px; padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold;">Email:</label>
+            <input type="email" name="email" required style="width: 300px; padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold;">Message:</label>
+            <textarea name="message" required style="width: 300px; height: 100px; padding: 8px; border-radius: 4px; border: 1px solid #ccc;"></textarea>
+        </div>
+
+        <button type="submit" style="background-color: #ff6b81; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">
+            Send Message
+        </button>
+    </form>
+</div>
+{% endblock %}

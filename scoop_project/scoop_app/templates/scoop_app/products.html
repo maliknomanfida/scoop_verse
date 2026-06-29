@@ -1,0 +1,14 @@
+{% block content %}
+<h1>Products Page</h1>
+<p>These are our delicious ice creams:</p>
+
+<div class="product-list">
+    {% for product in products %}
+        <div class="product-card">
+            <h3>{{ product.name }}</h3>
+            <p>Price: {{ product.price }}</p>
+            <p>{{ product.description }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
